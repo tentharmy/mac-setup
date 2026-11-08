@@ -62,3 +62,4 @@ link_file "dotfiles/zshrc" ".zshrc"
 
 # macOS preferences
 sh "$PWD/macos/finder.sh"
+sh "$PWD/macos/dock.sh"
