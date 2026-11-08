@@ -32,3 +32,11 @@ mkdir -p "$HOME/.config/1Password/ssh"
 link_file \
     "dotfiles/1password/agent.toml" \
     ".config/1Password/ssh/agent.toml"
+
+# Homebrew packages
+if command -v brew >/dev/null 2>&1; then
+    brew bundle --file="$PWD/Brewfile"
+else
+    echo "Homebrew is not installed" >&2
+    exit 1
+fi
