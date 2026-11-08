@@ -64,3 +64,6 @@ link_file "dotfiles/zshrc" ".zshrc"
 sh "$PWD/macos/finder.sh"
 sh "$PWD/macos/dock.sh"
 sh "$PWD/macos/trackpad.sh"
+
+# Use SSH for authenticated Git operations.
+git remote set-url origin git@github.com:tentharmy/mac-setup.git
