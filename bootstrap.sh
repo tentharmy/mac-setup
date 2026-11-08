@@ -46,12 +46,6 @@ fi
 # Make Homebrew available to this process
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Configure Homebrew for future login shells
-link_file "dotfiles/zprofile" ".zprofile"
-
-# Configure Starship for future login shells
-link_file "dotfiles/zshrc" ".zshrc"
-
 # Homebrew packages
 if command -v brew >/dev/null 2>&1; then
     brew bundle --file="$PWD/Brewfile"
@@ -59,3 +53,12 @@ else
     echo "Homebrew is not installed" >&2
     exit 1
 fi
+
+# Configure zprofile
+link_file "dotfiles/zprofile" ".zprofile"
+
+# Configure zshrc
+link_file "dotfiles/zshrc" ".zshrc"
+
+# macOS preferences
+sh "$PWD/macos/finder.sh"
