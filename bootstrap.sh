@@ -49,6 +49,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Configure Homebrew for future login shells
 link_file "dotfiles/zprofile" ".zprofile"
 
+# Configure Starship for future login shells
+link_file "dotfiles/zshrc" ".zshrc"
+
 # Homebrew packages
 if command -v brew >/dev/null 2>&1; then
     brew bundle --file="$PWD/Brewfile"

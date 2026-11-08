@@ -1,0 +1,2 @@
+# Spaceship prompt
+source "$HOMEBREW_PREFIX/opt/spaceship/spaceship.zsh"
