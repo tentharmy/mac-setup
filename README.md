@@ -1,48 +1,37 @@
 # mac-setup
 
-Reproducible macOS development environment.
+Reproducible macOS development setup for Apple silicon.
 
-### Prerequisite: Xcode Command Line Tools
+## Bootstrap
 
-On a fresh macOS installation:
-xcode-select --install
+On a fresh Mac, run `xcode-select --install` and wait for the Command Line Tools to finish installing. Then run:
+
+```sh
+mkdir -p ~/Dev
+git clone https://github.com/tentharmy/mac-setup.git ~/Dev/mac-setup
+cd ~/Dev/mac-setup
+./bootstrap.sh
+```
+
+Bootstrap installs the Brewfile packages, symlinks the dotfiles, and applies macOS preferences. If it stops at an existing dotfile, review and back up or merge that file before rerunning. Keep the checkout in place because the symlinks point into it.
+
+> The initial HTTPS clone needs no credentials. Bootstrap switches `origin` to SSH, so enable the 1Password SSH Agent before pushing.
+
+## Manual setup
 
 ### Keyboard
 
-- Open System Settings → Keyboard → Text Input → Edit.
-- Add Russian (standard layout).
-- Keep ABC as the English input source.
+In **System Settings → Keyboard → Text Input → Edit**, keep **ABC** and add **Russian** (standard layout).
 
-### 1Password
+### 1Password in Zen
 
-1. Sign in to the 1Password desktop app.
-2. Open **Settings → Browser**.
-3. Install the browser extension in Zen using the link from 1Password.
-4. Select **Add Browser** and authorize Zen.
-5. Verify browser autofill.
-6. Open **Settings → Developer → SSH Agent** and enable the agent.
-7. Verify SSH access:
-   ssh -T git@github.com
+1. In the 1Password desktop app, open **Settings → Browser** and use the extension link to install 1Password in Zen.
+2. In the same pane, select **Add Browser** and choose Zen from **Applications** to connect the extension to the desktop app.
 
-Expected: `Hi tentharmy! You've successfully authenticated...`
+[1Password trusted browser setup](https://support.1password.com/additional-browsers/)
 
-On first connection, verify GitHub's official SSH host fingerprint before accepting it.
+### SSH and GitHub CLI
 
+In 1Password, enable **Settings → Developer → SSH Agent**, then test with `ssh -T git@github.com`. On first connection, compare the prompt with [GitHub’s SSH host fingerprints](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints) before accepting it.
 
-### GitHub CLI
-
-Run `gh auth login`.
-
-Select:
-- **GitHub.com**
-- **Login with a web browser**
-- **SSH** as the Git protocol
-- **Generate a new SSH key → No**
-
-Complete authentication in the browser.
-
-Verify with `gh auth status`.
-
-Expected account: `tentharmy`.
-
-**Note:** SSH keys are managed by 1Password SSH Agent. Do not generate additional keys through GitHub CLI.
+In `gh auth login`, choose **SSH** as the Git protocol and answer **No** if asked to generate a new SSH key. Git uses the key managed by 1Password.
