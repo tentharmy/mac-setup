@@ -48,7 +48,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Homebrew packages
 if command -v brew >/dev/null 2>&1; then
-    brew bundle --file="$PWD/Brewfile"
+    brew bundle --verbose --file="$PWD/Brewfile"
 else
     echo "Homebrew is not installed" >&2
     exit 1
@@ -63,3 +63,4 @@ link_file "dotfiles/zshrc" ".zshrc"
 # macOS preferences
 sh "$PWD/macos/finder.sh"
 sh "$PWD/macos/dock.sh"
+sh "$PWD/macos/trackpad.sh"
