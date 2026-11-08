@@ -33,6 +33,22 @@ link_file \
     "dotfiles/1password/agent.toml" \
     ".config/1Password/ssh/agent.toml"
 
+# Homebrew installation
+if [ ! -x /opt/homebrew/bin/brew ]; then
+    echo "Installing Homebrew..."
+
+    /bin/bash -c "$(
+        curl -fsSL \
+        https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+    )"
+fi
+
+# Make Homebrew available to this process
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Configure Homebrew for future login shells
+link_file "dotfiles/zprofile" ".zprofile"
+
 # Homebrew packages
 if command -v brew >/dev/null 2>&1; then
     brew bundle --file="$PWD/Brewfile"
