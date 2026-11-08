@@ -4,6 +4,9 @@ set -eu
 # Keep Dock hidden until explicitly needed.
 defaults write com.apple.dock autohide -bool true
 
+# Minimize windows into their application icons.
+defaults write com.apple.dock minimize-to-application -bool true
+
 # Disable icon magnification.
 defaults write com.apple.dock magnification -bool false
 
