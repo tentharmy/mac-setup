@@ -11,3 +11,5 @@ defaults write com.apple.finder AppleShowAllFiles -bool true
 
 # Reload Finder to apply changes.
 killall Finder
+
+printf '✓ Finder configured\n'

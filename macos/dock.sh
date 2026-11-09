@@ -27,3 +27,5 @@ defaults write com.apple.dock persistent-apps -array
 
 # Apply changes.
 killall Dock
+
+printf '✓ Dock configured\n'
