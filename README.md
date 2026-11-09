@@ -30,6 +30,21 @@ In **System Settings → Keyboard → Text Input → Edit**, keep **ABC** and ad
 
 [1Password trusted browser setup](https://support.1password.com/additional-browsers/)
 
+### 1Password AutoFill
+
+1. Open **1Password → Settings → AutoFill** and enable macOS AutoFill.
+2. In **System Settings → General → AutoFill & Passwords**, select 1Password as the password provider.
+3. In **System Settings → Privacy & Security → Device Control and Data Access**, grant 1Password the required permission for Universal AutoFill.
+4. Verify AutoFill in a native macOS application.
+
+### FileVault
+
+1. Enable FileVault in **System Settings → Privacy & Security → FileVault**.
+2. Save the **FileVault Recovery Key** as a secure item in 1Password.
+3. Verify the recovery key is accessible from another device before relying on it.
+
+**Important:** Never store the recovery key in the `mac-setup` repository.
+
 ### SSH and GitHub CLI
 
 In 1Password, enable **Settings → Developer → SSH Agent**, then test with `ssh -T git@github.com`. On first connection, compare the prompt with [GitHub’s SSH host fingerprints](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints) before accepting it.
